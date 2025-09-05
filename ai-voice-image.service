@@ -1,0 +1,23 @@
+[Unit]
+Description=AI Voice Image Auto Updater and Launcher
+After=default.target
+Wants=default.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/home/orangepi/T2I/pycharm_project_287
+Environment=DISPLAY=:0
+Environment=WAYLAND_DISPLAY=wayland-0
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+Environment=PYTHONPATH=/home/orangepi/T2I/pycharm_project_287
+Environment=PATH=/home/orangepi/test1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ExecStartPre=/bin/sleep 30
+ExecStart=/home/orangepi/T2I/pycharm_project_287/startup_updater.sh
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
